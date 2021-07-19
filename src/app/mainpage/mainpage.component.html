@@ -1,3 +1,91 @@
-<p>
-  mainpage works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Current Order</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <p>Please enter the number of pizzas:</p>
+
+  <div id="quantityGrid">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button>1</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>2</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>3</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button>4</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>5</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>6</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button>7</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>8</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>9</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button>Reset</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>0</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>Buy</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div id="optionsGrid">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <p>Toppings:</p>
+          <ion-list>
+            <ion-item></ion-item>
+          </ion-list>
+        </ion-col>
+
+        <ion-col>
+          <p>Sizes:</p>
+          <ion-list>
+            <ion-item></ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
