@@ -74,14 +74,22 @@
         <ion-col>
           <p>Toppings:</p>
           <ion-list>
-            <ion-item></ion-item>
+            <ion-item *ngFor="let topping of toppings">
+              <ion-label>
+                {{topping.name}}
+              </ion-label>
+            </ion-item>
           </ion-list>
         </ion-col>
 
         <ion-col>
           <p>Sizes:</p>
           <ion-list>
-            <ion-item></ion-item>
+            <ion-item *ngFor="let size of sizes">
+              <ion-label>
+                {{size.name}}
+              </ion-label>
+            </ion-item>
           </ion-list>
         </ion-col>
       </ion-row>
