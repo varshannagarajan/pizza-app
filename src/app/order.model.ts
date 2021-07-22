@@ -17,4 +17,10 @@ export class Order {
     this.orderPrice = orderPrice
     this.orderQuantity = orderQuantity
   }
+
+  public addPizza(pizza: Pizza) {
+    this.pizzas.push(pizza)
+    this.orderPrice += pizza.getPrice()
+    this.orderQuantity += pizza.quantity
+  }
 }

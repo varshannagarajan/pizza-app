@@ -12,7 +12,7 @@ export class Pizza {
     this.quantity = quantity
   }
 
-  getPrice(): number {
+  public getPrice(): number {
     return this.size.price + this.topping.price;
   }
 }
