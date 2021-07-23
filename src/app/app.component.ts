@@ -7,10 +7,10 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Current Order', url: '/mainpage', icon: 'bag-check' },
-    { title: 'Update Order', url: '', icon: 'create' },
+    { title: 'Current Order', url: '/currentorder', icon: 'bag-check' },
+    { title: 'Update Order', url: '/mainpage', icon: 'create' },
     { title: 'Previous Orders', url: '', icon: 'albums' },
     { title: 'New Order', url: '', icon: 'refresh' },
   ];
-  constructor() {}
+  constructor() { }
 }
