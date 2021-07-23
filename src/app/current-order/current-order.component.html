@@ -17,7 +17,35 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+        <ion-card *ngIf="this.ms.currentOrder">
+          <ion-card-header>
+            Current Order Information
+          </ion-card-header>
+          <ion-card-content>
+            <p>Total Price: ${{this.ms.currentOrder.orderPrice}}</p>
+            <p>Total Quantity: {{this.ms.currentOrder.orderQuantity}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
+    <ion-row *ngFor="let pizza of this.ms.currentOrder.pizzas; let i = index">
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            Pizza {{i+1}}
+          </ion-card-header>
+          <ion-card-content>
+            <p>Topping: {{pizza.topping.name}} | Size: {{pizza.size.name}}</p>
+            <p>Quantity: {{pizza.quantity}} | Price: ${{pizza.getPrice()}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)=placeOrder() expand='block'>Place Order
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -32,7 +32,6 @@ export class MainpageComponent implements OnInit {
     this.numPizzas = '0';
     this.selectedTopping = new Topping('', 0)
     this.selectedSize = new Size('', 0)
-    this.ms.currentOrder = new Order([], new Date(), 0, 0)
   }
 
   ngOnInit() {

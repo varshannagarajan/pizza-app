@@ -12,7 +12,10 @@ export class ManagerService {
   currentOrder: Order;
   orderHistory: OrderHistory;
 
-  constructor() { }
+  constructor() {
+    this.currentOrder = new Order([], new Date(), 0, 0)
+    this.orderHistory = new OrderHistory([])
+  }
 
 
 }

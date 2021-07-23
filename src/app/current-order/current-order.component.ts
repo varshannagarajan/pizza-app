@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ManagerService } from '../manager.service';
+import { Order } from '../order.model';
 
 @Component({
   selector: 'app-current-order',
@@ -7,8 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrentOrderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ms: ManagerService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  placeOrder() {
+    this.ms.orderHistory.addOrder(this.ms.currentOrder)
+    console.log(this.ms.orderHistory)
+    this.ms.currentOrder = new Order([], new Date(), 0, 0)
+  }
 
 }

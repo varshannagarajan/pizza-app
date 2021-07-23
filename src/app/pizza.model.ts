@@ -13,6 +13,6 @@ export class Pizza {
   }
 
   public getPrice(): number {
-    return this.size.price + this.topping.price;
+    return this.quantity * (this.size.price + this.topping.price);
   }
 }
