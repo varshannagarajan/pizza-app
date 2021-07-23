@@ -9,11 +9,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainPageModule } from './mainpage/mainpage.module';
 import { CurrentOrderModule } from './current-order/currentorder.module';
+import { PreviousOrdersModule } from './previous-orders/previous-orders.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule, MainPageModule, CurrentOrderModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule, MainPageModule, CurrentOrderModule, PreviousOrdersModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

@@ -1,3 +1,39 @@
-<p>
-  previous-orders works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Previous Orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ng-container *ngIf=this.ms.orderHistory.history>
+      <ion-row *ngFor="let order of this.ms.orderHistory.history; let j = index">
+        <ion-col>
+          <ion-label>
+            Order {{j+1}}
+          </ion-label>
+
+          <ion-card *ngFor="let pizza of order.pizzas; let i = index">
+            <ion-card-header>
+              Pizza {{i+1}}
+            </ion-card-header>
+            <ion-card-content>
+              <p>Topping: {{pizza.topping.name}} | Size: {{pizza.size.name}}</p>
+              <p>Quantity: {{pizza.quantity}} | Price: ${{pizza.getPrice()}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+  </ion-grid>
+
+</ion-content>
