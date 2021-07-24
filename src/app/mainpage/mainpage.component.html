@@ -14,55 +14,59 @@
     </ion-toolbar>
   </ion-header>
 
-  <p>Please enter the number of pizzas:{{numPizzas}}</p>
-
   <div id="quantityGrid">
-    <ion-grid>
+    <ion-grid fixed="true">
+      <ion-row>
+        <p>Please enter the number of pizzas: {{numPizzas}}</p>
+      </ion-row>
+
       <ion-row>
         <ion-col>
-          <ion-button (click)="appendDigit('1')">1</ion-button>
+          <ion-button (click)="appendDigit('1')" expand="block" size="large" strong="true" fill="outline">1</ion-button>
         </ion-col>
         <ion-col>
-          <ion-button (click)="appendDigit('2')">2</ion-button>
+          <ion-button (click)="appendDigit('2')" expand="block" size="large" strong="true" fill="outline">2</ion-button>
         </ion-col>
         <ion-col>
-          <ion-button (click)="appendDigit('3')">3</ion-button>
+          <ion-button (click)="appendDigit('3')" expand="block" size="large" strong="true" fill="outline">3</ion-button>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
-          <ion-button (click)="appendDigit('4')">4</ion-button>
+          <ion-button (click)="appendDigit('4')" expand="block" size="large" strong="true" fill="outline">4</ion-button>
         </ion-col>
         <ion-col>
-          <ion-button (click)="appendDigit('5')">5</ion-button>
+          <ion-button (click)="appendDigit('5')" expand="block" size="large" strong="true" fill="outline">5</ion-button>
         </ion-col>
         <ion-col>
-          <ion-button (click)="appendDigit('6')">6</ion-button>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <ion-button (click)="appendDigit('7')">7</ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button (click)="appendDigit('8')">8</ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button (click)="appendDigit('9')">9</ion-button>
+          <ion-button (click)="appendDigit('6')" expand="block" size="large" strong="true" fill="outline">6</ion-button>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
-          <ion-button (click)="reset()">Reset</ion-button>
+          <ion-button (click)="appendDigit('7')" expand="block" size="large" strong="true" fill="outline">7</ion-button>
         </ion-col>
         <ion-col>
-          <ion-button (click)="appendDigit('0')">0</ion-button>
+          <ion-button (click)="appendDigit('8')" expand="block" size="large" strong="true" fill="outline">8</ion-button>
         </ion-col>
         <ion-col>
-          <ion-button (click)="buy()">Buy</ion-button>
+          <ion-button (click)="appendDigit('9')" expand="block" size="large" strong="true" fill="outline">9</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="reset()" color="danger" expand="block" size="large">Reset
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="appendDigit('0')" expand="block" size="large" strong="true" fill="outline">0</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="buy()" color="success" expand="block" size="large">Buy
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -74,10 +78,8 @@
         <ion-col>
           <p>Toppings: {{selectedTopping.name}} - ${{selectedTopping.price}}</p>
           <ion-list>
-            <ion-item *ngFor="let topping of toppings">
-              <ion-button (click)="selectTopping(topping)">
-                {{topping.name}} - ${{topping.price}}
-              </ion-button>
+            <ion-item *ngFor="let topping of toppings" (click)="selectTopping(topping)">
+              {{topping.name}} - ${{topping.price}}
             </ion-item>
           </ion-list>
         </ion-col>
@@ -85,10 +87,8 @@
         <ion-col>
           <p>Sizes: {{selectedSize.name}} - ${{selectedSize.price}}</p>
           <ion-list>
-            <ion-item *ngFor="let size of sizes">
-              <ion-button (click)="selectSize(size)">
-                {{size.name}} - ${{size.price}}
-              </ion-button>
+            <ion-item *ngFor="let size of sizes" (click)="selectSize(size)">
+              {{size.name}} - ${{size.price}}
             </ion-item>
           </ion-list>
         </ion-col>
