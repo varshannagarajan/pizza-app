@@ -15,11 +15,11 @@
   </ion-header>
 
   <ion-grid>
-    <ng-container *ngIf=this.ms.orderHistory.history>
-      <ion-row *ngFor="let order of this.ms.orderHistory.history; let j = index">
+    <ng-container *ngIf=this.ms.orderHistory>
+      <ion-row *ngFor="let order of this.ms.orderHistory; let j = index">
         <ion-col>
           <ion-label>
-            Order {{j+1}}
+            Order {{j+1}} - {{this.ms.orderHistory[j].orderTime.toLocaleString()}}
           </ion-label>
 
           <ion-card *ngFor="let pizza of order.pizzas; let i = index">

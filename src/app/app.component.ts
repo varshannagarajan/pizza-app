@@ -16,6 +16,6 @@ export class AppComponent {
   constructor(private ms: ManagerService) { }
 
   newOrder() {
-    this.ms.currentOrder = new Order([], new Date(), 0, 0)
+    this.ms.currentOrder = new Order([], 0, 0)
   }
 }

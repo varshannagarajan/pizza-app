@@ -11,11 +11,11 @@ import { Topping } from './topping.model';
 export class ManagerService {
 
   currentOrder: Order;
-  orderHistory: OrderHistory;
+  orderHistory: OrderHistory[];
 
   constructor() {
-    this.currentOrder = new Order([], new Date(), 0, 0)
-    this.orderHistory = new OrderHistory([])
+    this.currentOrder = new Order([], 0, 0)
+    this.orderHistory = []
   }
 
   buy(selectedSize: Size, selectedTopping: Topping, quantity: number) {
@@ -24,8 +24,8 @@ export class ManagerService {
   }
 
   placeOrder() {
-    this.orderHistory.addOrder(this.currentOrder)
-    this.currentOrder = new Order([], new Date(), 0, 0)
+    this.orderHistory.push(new OrderHistory(this.currentOrder, new Date()))
+    this.currentOrder = new Order([], 0, 0)
   }
 
 }

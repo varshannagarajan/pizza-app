@@ -1,14 +1,13 @@
 import { Order } from "./order.model";
 
-export class OrderHistory {
-  history: Order[];
+export class OrderHistory extends Order {
+  orderTime: Date;
 
-  constructor(history: Order[]) {
-    this.history = history
+  constructor(
+    order: Order,
+    orderTime: Date) {
+    super(order.pizzas, order.orderPrice, order.orderQuantity)
+    this.orderTime = orderTime
   }
 
-  public addOrder(order: Order) {
-    this.history.push(order)
-    console.log(this.history)
-  }
 }
