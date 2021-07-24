@@ -42,16 +42,19 @@ export class MainpageComponent implements OnInit {
     this.numPizzas = this.numPizzas == '0' ? digit : this.numPizzas + digit;
   }
 
-  reset() {
+  resetQuantity() {
     this.numPizzas = '0';
   }
 
-  buy() {
-    let newPizza = new Pizza(this.selectedSize, this.selectedTopping, parseInt(this.numPizzas))
-    this.ms.currentOrder.addPizza(newPizza)
+  resetAll() {
     this.numPizzas = '0';
     this.selectedTopping = new Topping('', 0)
     this.selectedSize = new Size('', 0)
+  }
+
+  buyButton() {
+    this.ms.buy(this.selectedSize, this.selectedTopping, parseInt(this.numPizzas))
+    this.resetAll();
   }
 
   selectTopping(topping: Topping) {

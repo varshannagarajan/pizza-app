@@ -13,10 +13,4 @@ export class CurrentOrderComponent implements OnInit {
 
   ngOnInit() { }
 
-  placeOrder() {
-    this.ms.orderHistory.addOrder(this.ms.currentOrder)
-    console.log(this.ms.orderHistory)
-    this.ms.currentOrder = new Order([], new Date(), 0, 0)
-  }
-
 }
