@@ -3,7 +3,7 @@ import { Pizza } from '../pizza.model';
 import { Size } from '../size.model';
 import { Topping } from '../topping.model';
 import { ManagerService } from '../manager.service'
-import { Order } from '../order.model';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mainpage',
@@ -28,7 +28,7 @@ export class MainpageComponent implements OnInit {
   selectedTopping: Topping;
   selectedSize: Size;
 
-  constructor(private ms: ManagerService) {
+  constructor(private ms: ManagerService, public alertController: AlertController) {
     this.numPizzas = '0';
     this.selectedTopping = new Topping('', 0)
     this.selectedSize = new Size('', 0)
@@ -52,16 +52,52 @@ export class MainpageComponent implements OnInit {
     this.selectedSize = new Size('', 0)
   }
 
-  buyButton() {
-    this.ms.buy(this.selectedSize, this.selectedTopping, parseInt(this.numPizzas))
-    this.resetAll();
-  }
-
   selectTopping(topping: Topping) {
     this.selectedTopping = topping;
   }
 
   selectSize(size: Size) {
     this.selectedSize = size;
+  }
+
+  checkForErrors() {
+    let errorMsg: string = ''
+    if (this.selectedTopping.name == '')
+      errorMsg += "Error: No topping selected" + '<br/>'
+    if (this.selectedSize.name == '')
+      errorMsg += "Error: No size selected" + '<br/>'
+    if (parseInt(this.numPizzas) <= 0)
+      errorMsg += "Error: No quantity selected" + '<br/>'
+    return errorMsg
+  }
+
+  async buyButton() {
+
+    let errorMsg = this.checkForErrors()
+
+    if (errorMsg == '') {
+      let newPizza = new Pizza(this.selectedSize, this.selectedTopping, parseInt(this.numPizzas))
+      this.ms.buy(newPizza)
+      this.resetAll();
+
+      const alert = await this.alertController.create({
+        header: 'Sucess!',
+        subHeader: 'The pizza was added to your order!',
+        message: newPizza.ToString() + '<br/>' + 'Total Order Quantity: ' + this.ms.currentOrder.orderQuantity + '<br/>' + 'Total Order Price: $' + this.ms.currentOrder.orderPrice + '<br/>',
+        buttons: ['OK']
+      });
+
+      await alert.present();
+
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Sorry!',
+        subHeader: 'There are the following errors:',
+        message: errorMsg,
+        buttons: ['Cancel']
+      });
+
+      await alert.present();
+    }
   }
 }

@@ -15,4 +15,8 @@ export class Pizza {
   public getPrice(): number {
     return this.quantity * (this.size.price + this.topping.price);
   }
+
+  ToString() {
+    return 'Topping: ' + this.topping.name + '<br/>' + 'Size: ' + this.size.name + '<br/>' + 'Quantity: ' + this.quantity + '<br/>' + 'Price: $' + this.getPrice() + '<br/>'
+  }
 }
