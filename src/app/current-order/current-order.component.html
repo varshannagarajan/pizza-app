@@ -31,7 +31,7 @@
 
     <ion-row *ngFor="let pizza of this.ms.currentOrder.pizzas; let i = index">
       <ion-col>
-        <ion-card>
+        <ion-card (click)="buyButton(i)">
           <ion-card-header>
             Pizza {{i+1}}
           </ion-card-header>

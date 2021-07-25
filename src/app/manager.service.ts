@@ -25,4 +25,10 @@ export class ManagerService {
     this.currentOrder = new Order([], 0, 0)
   }
 
+  removePizza(index: number) {
+    this.currentOrder.orderPrice -= this.currentOrder.pizzas[index].getPrice()
+    this.currentOrder.orderQuantity -= this.currentOrder.pizzas[index].quantity
+    this.currentOrder.pizzas.splice(index, 1)
+  }
+
 }

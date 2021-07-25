@@ -72,19 +72,24 @@ export class MainpageComponent implements OnInit {
   }
 
   async buyButton() {
-
     let errorMsg = this.checkForErrors()
+    let newPizza = new Pizza(this.selectedSize, this.selectedTopping, parseInt(this.numPizzas))
 
     if (errorMsg == '') {
-      let newPizza = new Pizza(this.selectedSize, this.selectedTopping, parseInt(this.numPizzas))
-      this.ms.buy(newPizza)
-      this.resetAll();
-
       const alert = await this.alertController.create({
-        header: 'Sucess!',
-        subHeader: 'The pizza was added to your order!',
-        message: newPizza.ToString() + '<br/>' + 'Total Order Quantity: ' + this.ms.currentOrder.orderQuantity + '<br/>' + 'Total Order Price: $' + this.ms.currentOrder.orderPrice + '<br/>',
-        buttons: ['OK']
+        header: 'Success!',
+        subHeader: 'The pizza will added to your order!',
+        message: newPizza.ToString() + '<br/>' + 'Total Order Quantity: ' + (this.ms.currentOrder.orderQuantity + newPizza.quantity) + '<br/>' + 'Total Order Price: $' + (this.ms.currentOrder.orderPrice + newPizza.getPrice()) + '<br/>',
+        buttons: [{
+          text: 'Cancel',
+          role: 'cancel',
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.ms.buy(newPizza)
+            this.resetAll();
+          }
+        }]
       });
 
       await alert.present();
